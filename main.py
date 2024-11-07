@@ -1,4 +1,5 @@
 import flet as ft
+from menu import *
 
 def main(page):
     
@@ -8,7 +9,7 @@ def main(page):
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
     def login (e):
-        if entrada_nome.value == "123" and entrada_senha.value == "123": # Verifica se o usuário e a senha condizem com o registro
+        if entrada_nome.value == "123" and entrada_senha.value == "Asas": # Verifica se o usuário e a senha condizem com o registro
             page.clean()
         else:
             ...
