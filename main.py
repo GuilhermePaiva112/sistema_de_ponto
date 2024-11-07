@@ -7,14 +7,23 @@ def main(page):
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
+    def login (e):
+        if entrada_nome.value == "123" and entrada_senha.value == "123": # Verifica se o usuário e a senha condizem com o registro
+            page.clean()
+        else:
+            ...
+
+    # Text Field responsável pelo CPF
     entrada_nome = ft.TextField(
         label="Digite seu CPF", 
         on_change=lambda e: atualizar_botao(), 
         color="#000000", 
         focused_border_color="#000000", 
         label_style=ft.TextStyle(color="#000000")
+        # Validar CPF
     )
     
+    # Text Field responsável pela senha
     entrada_senha = ft.TextField(
         label="Digite sua senha", 
         password=True, 
@@ -25,10 +34,11 @@ def main(page):
         label_style=ft.TextStyle(color="#000000")
     )
       
-    botao_login = ft.ElevatedButton("Acessar", disabled=True)
+    botao_login = ft.ElevatedButton("Acessar", on_click=login, disabled=True)
     
     botao_esqueci_senha = ft.TextButton(text="Esqueci a Senha", on_click=None)
-    def atualizar_botao():
+    
+    def atualizar_botao(): # Verifica se os campos de entrada do CPF e Senha foram preenchidos
         botao_login.disabled = not (entrada_nome.value and entrada_senha.value)
         page.update()
 
@@ -37,6 +47,7 @@ def main(page):
         content=ft.Column(
             controls=[
                 ft.Card(
+                    # Card responsável pela adição dos itens de login
                     content=ft.Container(
                         content=ft.Column(
                             controls=[
