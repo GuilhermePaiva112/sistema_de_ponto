@@ -1,17 +1,26 @@
 import flet as ft
 from menu import create_menu
-def create_olamundo(page):
+
+def main(page: ft.Page):
+    page.title = "Sistema de Ponto"
+    
     def chamar(e):
         page.clean()
-        add_menu = create_menu
-        page.add(add_menu)
+        
+        # Recebe app_bar e sidebar como uma tupla
+        app_bar, sidebar = create_menu()
+        
+        # Adiciona app_bar e sidebar à página ao clicar no botão
+        page.add(app_bar)
+        page.add(sidebar)
         page.update()
     
+    # Botão para chamar o menu
     add = ft.Container(
-        content=(
-            ft.ElevatedButton(f'Chamar', on_click=chamar)
-        )
+        content=ft.ElevatedButton('Chamar', on_click=chamar)
     )
+    
     page.add(add)
+    page.update()
 
-ft.app(create_olamundo)
+ft.app(target=main)

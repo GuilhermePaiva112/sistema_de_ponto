@@ -134,7 +134,7 @@ def create_menu():
         )
     )
 
-    return sidebar
+    return app_bar, sidebar
 """
     page.add(app_bar)
     page.add(sidebar)
