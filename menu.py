@@ -20,6 +20,9 @@ def create_menu(page):
         ],
     )
 
+    def laranja():
+        print('Ola Mundo')
+
     rail = ft.NavigationRail(
             selected_index=0,
             label_type=ft.NavigationRailLabelType.ALL,
@@ -118,7 +121,9 @@ def create_menu(page):
                     padding=ft.padding.only(bottom=-10),
                 ),
             ],
-            on_change=lambda e: print("Selected destination:", e.control.selected_index),
+            on_change=lambda e: create_menu2(page) if e.control.selected_index == 0 else None
+                
+            # on_change=lambda e: print("Selected destination:", e.control.selected_index),
         )
 
     def voltar(e):
