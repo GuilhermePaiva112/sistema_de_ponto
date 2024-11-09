@@ -12,8 +12,9 @@ def main(page):
     def login (e):
         if entrada_nome.value == "123" and entrada_senha.value == "123": # Verifica se o usuário e a senha condizem com o registro
             page.clean()
-            add_menu = create_menu
-            page.add(add_menu)
+            app_bar, sidebar = create_menu(page)
+            page.add(app_bar)
+            page.add(sidebar)
             page.update()
         else:
             ...

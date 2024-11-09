@@ -1,9 +1,9 @@
 import flet as ft
-from test2 import create_menu2
+#from menu import create_menu
 
-def create_menu(page):
+def create_menu2(page):
     page.horizontal_alignment = ft.CrossAxisAlignment.START
-    page.bgcolor = ft.colors.WHITE
+    page.bgcolor = ft.colors.ORANGE
     app_bar = ft.AppBar(
         title=ft.Text("Sistema de Ponto Web", size=40),
         center_title=True,
@@ -24,6 +24,8 @@ def create_menu(page):
             selected_index=0,
             label_type=ft.NavigationRailLabelType.ALL,
             bgcolor=ft.colors.GREEN_300,
+            # min_width=100,
+            # min_extended_width=400,
             group_alignment=-1.0,
             extended=True,
             destinations=[
@@ -121,26 +123,16 @@ def create_menu(page):
             on_change=lambda e: print("Selected destination:", e.control.selected_index),
         )
 
-    def voltar(e):
-        page.clean()
-        page.add(app_bar)
-        page.add(sidebar)
-        page.update()
-
-    def chamar(e):
+    """def chamar(e):
         page.clean()
         
         # Recebe app_bar e sidebar como uma tupla
-        app_bar, sidebar = create_menu2(page)
+        app_bar, sidebar = create_menu(page)
         
         # Adiciona app_bar e sidebar à página ao clicar no botão
         page.add(app_bar)
-        page.add(
-            ft.ElevatedButton(f"Voltar", on_click=voltar)
-        )
         page.add(sidebar)
-        
-        page.update()
+        page.update()"""
 
     sidebar = ft.Container(
         bgcolor=ft.colors.GREEN_300,
@@ -153,16 +145,14 @@ def create_menu(page):
                 controls=[
                     ft.Row(
                         [
-                            ft.ElevatedButton('Chamar', on_click=chamar),
+                            #ft.ElevatedButton('Chamar', on_click=chamar),
                             rail,
-                            
                         ],
-                    expand=True,
-                    ),
-                ]
+                        expand=True,
+                    )
+                ]   
             ),
         ),
-        
     )
 
     return app_bar, sidebar
